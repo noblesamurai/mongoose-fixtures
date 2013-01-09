@@ -5,7 +5,7 @@ async = require 'async'
 path = require 'path'
 expect = require 'expect.js'
 mongoose = require 'mongoose'
-fixturesLoader = require '../src/mongoose-fixtures'
+fixturesLoader = require '../main'
 MongooseInitializer = require('openifyit-commons').MongooseInitializer;
 
 describe 'mongoose-fixtures test', () =>
@@ -22,7 +22,7 @@ describe 'mongoose-fixtures test', () =>
         done()
 
     it 'should load fixtures from a directory', (done) =>
-        fixturesLoader.load './fixtures', (err) =>
+        fixturesLoader.load path.join(__dirname, './fixtures'), (err) =>
             expect(err).not.to.be.ok()
             CountrySchema = mongoose.connection.model 'Country'
             CountrySchema.find {}, (err, countries) =>
@@ -33,7 +33,7 @@ describe 'mongoose-fixtures test', () =>
                 done()
 
     it 'should load fixtures from a file', (done) =>
-        fixturesLoader.load './fixtures/countries.coffee', (err) =>
+        fixturesLoader.load path.join(__dirname, './fixtures/countries.coffee'), (err) =>
             expect(err).not.to.be.ok()
             CountrySchema = mongoose.connection.model 'Country'
             CountrySchema.find {}, (err, countries) =>

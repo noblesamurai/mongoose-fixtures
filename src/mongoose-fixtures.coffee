@@ -13,12 +13,11 @@ class MongooseFixtures
         if typeof data == 'object'
             @loadObject data, db, callback
         else if typeof data == 'string'
-            absolutePath = path.resolve(path.join(path.dirname(module.parent.filename), data))
-            stat = fs.statSync absolutePath
+            stat = fs.statSync data
             if stat.isDirectory()
-                @loadDir absolutePath, db, callback
+                @loadDir data, db, callback
             else
-                @loadFile absolutePath, db, callback
+                @loadFile data, db, callback
         else
             callback(new Error('Data must be an object, array or string (file or dir path)'))
 
@@ -50,18 +49,16 @@ class MongooseFixtures
         async.forEach data, iterator, callback
 
     loadFile: (file, db, callback) =>
-        absolutePath = path.resolve file
-        data = require absolutePath
+        data = require file
         @load data, db, callback
 
     loadDir: (dir, db, callback) =>
-        absolutePathDir = path.resolve dir
-        fs.readdir absolutePathDir, (err, files) =>
+        fs.readdir dir, (err, files) =>
             if (err)
                 callback err
             else
                 iterator = (file, next) =>
-                    absolutePath = path.join absolutePathDir, file
+                    absolutePath = path.join dir, file
                     @loadFile absolutePath, db, next
                 async.forEach files, iterator, callback
 
