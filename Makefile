@@ -10,4 +10,5 @@ test:
 		--reporter $(REPORTER) \
 		--timeout 10000 \
 		--bail \
-		tests/*.test.js \
+		tests/*.test.coffee \
+		--require coffee-script
