@@ -11,6 +11,16 @@ containing the data for documents within that.
 
 NOTE: Loading fixtures will clear the existing contents of a collection!
 
+Installation
+------------
+
+```
+$ npm install openifyit-mongoose-fixtures
+```
+
+Usage
+-----
+
 FOR EXAMPLE:
 With the file below, 3 documents will be inserted into the 'User' collection and 2 into the 'Business' collection:
 
@@ -44,11 +54,9 @@ You can also load fixtures as an object where each document is keyed, in case yo
         }
     }
 
+In your code
 
-Usage
------
-
-    var fixtures = require('fixtures');
+    var fixtures = require('openifyit-mongoose-fixtures');
     
     //Objects
     fixtures.load({
@@ -59,15 +67,7 @@ Usage
     });
 
     //Files
-    fixtures.load(__dirname + '/fixtures/users.js');
+    fixtures.load('./fixtures/users.js');
 
     //Directories (loads all files in the directory)
-    fixtures.load(__dirname + '/fixtures');
-
-Installation
-------------
-
-Clone / download from [github](https://github.com/powmedia/mongoose-fixtures),
-and then require in your project:
-
-    var fixtures = require('./lib/mongoose-fixtures');
+    fixtures.load('./fixtures');
