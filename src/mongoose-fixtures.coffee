@@ -6,7 +6,6 @@ async =require 'async'
 
 class MongooseFixtures
     load: (data, db, callback) =>
-        console.log 'load'
         if typeof db == 'function'
             callback = db
             db = mongoose.connection
@@ -23,18 +22,15 @@ class MongooseFixtures
             callback(new Error('data must be an object, array or string (file or dir path)'))
 
     loadObject: (data, db, callback) =>
-        console.log 'loadObject', data
         iterator = (modelName, next) =>
             @_insertCollection modelName, data[modelName], db, next
         async.forEach Object.keys(data), iterator, callback
 
     loadFile: (file, db, callback) =>
-        console.log 'loadFile'
         data = require file
         @load data, db, callback
 
     loadDir: (dir, db, callback) =>
-        console.log 'loadDir'
         fs.readdir dir, (err, files) =>
             if (err)
                 callback err
@@ -45,7 +41,6 @@ class MongooseFixtures
                 async.forEach files, iterator, callback
 
     _insertCollection: (modelName, data, db, callback) =>
-        console.log '_insertCollection'
         @_removeCollection modelName, db, (err) =>
             if err
                 callback err
@@ -68,7 +63,6 @@ class MongooseFixtures
                 async.forEach items, iterator, callback
 
     _removeCollection: (modelName, db, callback) =>
-        console.log '_removeCollection'
         Model = db.model modelName
         Model.collection.remove callback
 
