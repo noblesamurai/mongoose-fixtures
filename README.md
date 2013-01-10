@@ -1,5 +1,4 @@
-mongoose-fixtures
-=================
+# mongoose-fixtures
 
 [![Build Status](https://travis-ci.org/OpenifyIt/mongoose-fixtures.png?branch=master)](https://travis-ci.org/OpenifyIt/mongoose-fixtures)
 
@@ -13,15 +12,12 @@ containing the data for documents within that.
 
 NOTE: Loading fixtures will clear the existing contents of a collection!
 
-Installation
-------------
+## Installation
 
-```
-$ npm install openifyit-mongoose-fixtures
-```
+    npm install openifyit-mongoose-fixtures
 
-Usage
------
+
+## Usage
 
 FOR EXAMPLE:
 With the file below, 3 documents will be inserted into the 'User' collection and 2 into the 'Business' collection:
@@ -73,3 +69,7 @@ In your code
 
     //Directories (loads all files in the directory)
     fixtures.load('./fixtures');
+
+## How to run tests
+
+    npm test
