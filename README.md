@@ -1,6 +1,8 @@
 mongoose-fixtures
 =================
 
+[![Build Status](https://travis-ci.org/OpenifyIt/mongoose-fixtures.png?branch=master)](https://travis-ci.org/OpenifyIt/mongoose-fixtures)
+
 Simple fixture loader for Mongoose on NodeJS.
 
 Fixtures can be in one file, or divided up into separate files for organisation 
