@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+require('coffee-script');
+var async = require('async');
+var MongooseInitializer = require('openifyit-commons').MongooseInitializer;
+var path = require('path');
+var fs   = require('fs');
+var lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../src');
+var optimist = require('optimist');
+var fixturesLoader = require('../main');
+
+var argv = optimist
+    .usage('Load fixtures using mongoose\nUsage $0 --mongodb_url [url] --models [path] --fixtures [path]')
+    .default('mongodb_url', 'mongodb://127.0.0.1:27017/test')
+    .default('models', './models')
+    .default('fixtures', './fixtures')
+    .demand(['mongodb_url', 'models', 'fixtures'])
+    .argv;
+
+var mongooseInitializer = new MongooseInitializer(argv.mongodb_url, path.join(process.cwd(), argv.models));
+
+var functions = [
+    mongooseInitializer.openConnection,
+    mongooseInitializer.loadModels,
+    fixturesLoader.load.bind(fixturesLoader, path.join(process.cwd(), argv.fixtures))
+]
+async.series(functions, function(err) {
+    if(err){
+        console.error(err);
+        process.exit(1);
+    }
+    else{
+        console.log('Done!');
+        process.exit(0);
+    }
+});

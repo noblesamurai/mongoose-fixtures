@@ -31,16 +31,20 @@
   "dependencies": {
     "mongoose": "3.2.x",
     "async": "0.1.x",
-    "coffee-script": "1.4.x"
+    "coffee-script": "1.4.x",
+    "optimist": "0.3.x",
+    "openifyit-commons": "0.1.x"
   },
   "devDependencies": {
     "mocha": "1.6.x",
     "expect.js": "0.1.x",
-    "openifyit-commons": "0.0.x",
     "mongodb": "1.2.x"
   },
   "scripts": {
     "test": "make test"
   },
-  "main": "main.js"
+  "main": "main.js",
+  "bin": {
+    "openifyit-mongoose-fixtures": "./bin/cmd"
+  }
 }
