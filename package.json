@@ -17,7 +17,7 @@
       "url": "https://github.com/jackdbernier"
     }
   ],
-  "version": "0.2.6",
+  "version": "0.2.7",
   "repository": {
     "type": "git",
     "url": "git://github.com/OpenifyIt/mongoose-fixtures.git"
@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "mongoose": "3.5.x",
-    "async": "0.1.x",
+    "async": "0.2.x",
     "coffee-script": "1.4.x",
     "optimist": "0.3.x",
     "openifyit-commons": "0.1.x"
