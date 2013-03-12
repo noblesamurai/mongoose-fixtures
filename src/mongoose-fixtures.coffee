@@ -64,6 +64,6 @@ class MongooseFixtures
 
     _removeCollection: (modelName, db, callback) =>
         Model = db.model modelName
-        Model.collection.drop callback
+        Model.collection.remove callback
 
 module.exports = new MongooseFixtures()

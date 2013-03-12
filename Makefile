@@ -1,6 +1,6 @@
 
-MONGODB_URL = 'mongodb://localhost:27017/mongoose-fixtures?safe=true'
-REPORTER = list
+MONGODB_URL='mongodb://localhost:27017/mongoose-fixtures?safe=true'
+REPORTER=list
 
 test:
 	@NODE_ENV=test \
