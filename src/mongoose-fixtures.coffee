@@ -24,7 +24,7 @@ class MongooseFixtures
     loadObject: (data, db, callback) =>
         iterator = (modelName, next) =>
             @_insertCollection modelName, data[modelName], db, next
-        async.forEach Object.keys(data), iterator, callback
+        async.each Object.keys(data), iterator, callback
 
     loadFile: (file, db, callback) =>
         data = require file
@@ -38,7 +38,7 @@ class MongooseFixtures
                 iterator = (file, next) =>
                     absolutePath = path.join dir, file
                     @loadFile absolutePath, db, next
-                async.forEach files, iterator, callback
+                async.each files, iterator, callback
 
     _insertCollection: (modelName, data, db, callback) =>
         @_removeCollection modelName, db, (err) =>
@@ -60,10 +60,10 @@ class MongooseFixtures
                             next err
                         else
                             next()
-                async.forEach items, iterator, callback
+                async.each items, iterator, callback
 
     _removeCollection: (modelName, db, callback) =>
         Model = db.model modelName
-        Model.collection.remove callback
+        Model.collection.drop callback
 
 module.exports = new MongooseFixtures()

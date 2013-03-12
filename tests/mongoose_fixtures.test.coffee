@@ -1,22 +1,24 @@
 
 require "coffee-script"
 
+path = require 'path'
+fs = require 'fs'
 async = require 'async'
 path = require 'path'
 expect = require 'expect.js'
 mongoose = require 'mongoose'
 fixturesLoader = require '../main'
-MongooseInitializer = require('openifyit-commons').MongooseInitializer;
 
 describe 'mongoose-fixtures test', () =>
     before (done) =>
-        @mongooseInitializer = new MongooseInitializer(process.env.MONGODB_URL, path.join(__dirname, './models'))
-
-        functions = [
-            @mongooseInitializer.openConnection,
-            @mongooseInitializer.loadModels
-        ]
-        async.series functions, done
+        mongoose.connect process.env.MONGODB_URL
+        mongoose.connection.on 'error', done
+        mongoose.connection.on 'open', () ->
+            modelsFolder = path.join(__dirname, './models')
+            models = fs.readdirSync modelsFolder
+            for model in models
+                require(path.join(modelsFolder, model))
+            done()
 
     after (done) =>
         done()
