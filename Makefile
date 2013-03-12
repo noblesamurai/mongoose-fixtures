@@ -1,4 +1,3 @@
-
 MONGODB_URL='mongodb://localhost:27017/mongoose-fixtures?safe=true'
 REPORTER=list
 

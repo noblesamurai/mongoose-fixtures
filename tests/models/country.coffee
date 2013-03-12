@@ -1,4 +1,3 @@
-
 mongoose = require 'mongoose'
 
 CountrySchema = new mongoose.Schema(

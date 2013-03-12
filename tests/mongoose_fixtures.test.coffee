@@ -1,4 +1,3 @@
-
 require "coffee-script"
 
 path = require 'path'

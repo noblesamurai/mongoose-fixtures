@@ -1,5 +1,6 @@
 mongoose = require 'mongoose'
 ObjectID = mongoose.mongo.BSONPure.ObjectID
+
 countries = new Array()
 
 country1 =
