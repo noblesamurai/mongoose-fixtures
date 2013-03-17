@@ -3,8 +3,8 @@
   "description": "Fixture loading for Mongoose on NodeJS",
   "maintainers":[
     { 
-      "name": "Jacques-Olivier D. Bernier",
-      "url": "https://github.com/jackdbernier"
+      "name": "Openify.it",
+      "url": "https://github.com/OpenifyIt"
     }
   ],
   "contributors":[
@@ -17,7 +17,12 @@
       "url": "https://github.com/jackdbernier"
     }
   ],
-  "version": "0.2.9",
+  "keywords": [
+    "mongoose",
+    "fixtures",
+    "test"
+  ],
+  "version": "0.2.10",
   "repository": {
     "type": "git",
     "url": "git://github.com/OpenifyIt/mongoose-fixtures.git"
