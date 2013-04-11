@@ -22,7 +22,7 @@
     "fixtures",
     "test"
   ],
-  "version": "0.2.10",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/OpenifyIt/mongoose-fixtures.git"
@@ -34,7 +34,7 @@
     }
   ],
   "dependencies": {
-    "mongoose": "3.5.x",
+    "mongoose": "3.6.x",
     "async": "0.2.x",
     "coffee-script": "1.4.x",
     "optimist": "0.3.x"
