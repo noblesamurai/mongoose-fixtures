@@ -1,13 +1,13 @@
-{ 
+{
   "name": "openifyit-mongoose-fixtures",
   "description": "Fixture loading for Mongoose on NodeJS",
-  "maintainers":[
-    { 
+  "maintainers": [
+    {
       "name": "Openify.it",
       "url": "https://github.com/OpenifyIt"
     }
   ],
-  "contributors":[
+  "contributors": [
     {
       "name": "Charles Davison",
       "url": "https://github.com/powmedia"
@@ -36,18 +36,20 @@
   "dependencies": {
     "mongoose": "3.6.x",
     "async": "0.2.x",
-    "coffee-script": "1.4.x",
     "optimist": "0.3.x"
   },
   "devDependencies": {
-    "mocha": "1.6.x",
-    "expect.js": "0.1.x",
-    "mongodb": "1.2.x"
+    "mongodb": "1.2.x",
+    "coffee-script": "~1.4.0",
+    "jasmine-node": "~1.11.0",
+    "coffeelint": "~0.5.7"
   },
   "scripts": {
-    "test": "make test"
+    "pretest": "make build",
+    "test": "make test",
+    "prepublish": "make build"
   },
-  "main": "main.js",
+  "main": "./lib/mongoose-fixtures.js",
   "bin": {
     "openifyit-mongoose-fixtures": "./bin/cmd"
   }
