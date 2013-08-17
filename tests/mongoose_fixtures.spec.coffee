@@ -1,15 +1,12 @@
-require "coffee-script"
-
 path = require 'path'
 fs = require 'fs'
 async = require 'async'
 path = require 'path'
-expect = require 'expect.js'
 mongoose = require 'mongoose'
-fixturesLoader = require '../main'
+fixturesLoader = require '../'
 
 describe 'mongoose-fixtures test', () =>
-    before (done) =>
+    beforeEach (done) =>
         mongoose.connect process.env.MONGODB_URL
         mongoose.connection.on 'error', done
         mongoose.connection.on 'open', () ->
@@ -19,39 +16,39 @@ describe 'mongoose-fixtures test', () =>
                 require(path.join(modelsFolder, model))
             done()
 
-    after (done) =>
-        done()
+    afterEach (done) =>
+        mongoose.connection.close done
 
     it 'should load fixtures from a directory', (done) =>
         fixturesLoader.load path.join(__dirname, './fixtures'), (err) =>
-            expect(err).not.to.be.ok()
+            expect(err).toBeNull()
             CountrySchema = mongoose.connection.model 'Country'
             CountrySchema.find {}, (err, countries) =>
-                expect(err).not.to.be.ok()
-                expect(countries).to.be.ok()
-                expect(countries).to.be.an(Array)
-                expect(countries.length).to.be.eql(2)
+                expect(err).toBeNull()
+                expect(countries).toBeTruthy()
+                expect(countries).toEqual jasmine.any(Array)
+                expect(countries.length).toEqual 2
                 done()
 
     it 'should load fixtures from a file', (done) =>
         fixturesLoader.load path.join(__dirname, './fixtures/countries.coffee'), (err) =>
-            expect(err).not.to.be.ok()
+            expect(err).toBeNull()
             CountrySchema = mongoose.connection.model 'Country'
             CountrySchema.find {}, (err, countries) =>
-                expect(err).not.to.be.ok()
-                expect(countries).to.be.ok()
-                expect(countries).to.be.an(Array)
-                expect(countries.length).to.be.eql(2)
+                expect(err).toBeNull()
+                expect(countries).toBeTruthy()
+                expect(countries).toEqual jasmine.any(Array)
+                expect(countries.length).toEqual 2
                 done()
 
     it 'should load fixtures from an object', (done) =>
         data = require './fixtures/countries'
         fixturesLoader.load data, (err) =>
-            expect(err).not.to.be.ok()
+            expect(err).toBeNull()
             CountrySchema = mongoose.connection.model 'Country'
             CountrySchema.find {}, (err, countries) =>
-                expect(err).not.to.be.ok()
-                expect(countries).to.be.ok()
-                expect(countries).to.be.an(Array)
-                expect(countries.length).to.be.eql(2)
+                expect(err).toBeNull()
+                expect(countries).toBeTruthy()
+                expect(countries).toEqual jasmine.any(Array)
+                expect(countries.length).toEqual 2
                 done()

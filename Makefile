@@ -17,6 +17,7 @@ test:
 	$(JASMINE_PATH) \
 		--forceexit \
 		--verbose \
+		--coffee \
 		./tests
 
 .PHONY: build coffeelint test
