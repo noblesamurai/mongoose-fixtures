@@ -54,3 +54,14 @@ describe 'mongoose-fixtures test', () =>
                 expect(countries).toEqual jasmine.any(Array)
                 expect(countries.length).toEqual 2
                 done()
+
+    it 'should load fixtures from a file which are in a keyed object', (done) =>
+        fixturesLoader.load path.join(__dirname, './fixtures/countries_objects.coffee'), (err) =>
+            expect(err).toBeNull()
+            CountrySchema = mongoose.connection.model 'Country'
+            CountrySchema.find {}, (err, countries) =>
+                expect(err).toBeNull()
+                expect(countries).toBeTruthy()
+                expect(countries).toEqual jasmine.any(Array)
+                expect(countries.length).toEqual 2
+                done()
