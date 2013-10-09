@@ -9,8 +9,8 @@ describe 'mongoose-fixtures test', () =>
     beforeEach (done) =>
         mongoose.connect process.env.MONGODB_URL
         mongoose.connection.on 'error', (err) ->
-          console.log(err)
-          done()
+            console.log(err)
+            done()
         mongoose.connection.on 'open', () ->
             modelsFolder = path.join(__dirname, './models')
             models = fs.readdirSync modelsFolder
