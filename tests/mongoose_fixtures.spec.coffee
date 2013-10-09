@@ -29,7 +29,7 @@ describe 'mongoose-fixtures test', () =>
                 expect(err).toBeNull()
                 expect(countries).toBeTruthy()
                 expect(countries).toEqual jasmine.any(Array)
-                expect(countries.length).toEqual 2
+                expect(countries.length).toEqual 4
                 done()
 
     it 'should load fixtures from a file', (done) =>

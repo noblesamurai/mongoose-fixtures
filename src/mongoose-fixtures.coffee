@@ -48,9 +48,8 @@ class MongooseFixtures
                 if Array.isArray(data)
                     items = data
                 else
-                    for i in data
-                        items.push data[i]
-
+                    for key, value of data
+                        items.push value
                 Model = db.model modelName
                 iterator = (item, next) =>
                     doc = new Model(item)
