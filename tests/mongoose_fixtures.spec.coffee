@@ -10,7 +10,7 @@ describe 'mongoose-fixtures test', () =>
         mongoose.connect process.env.MONGODB_URL
         mongoose.connection.on 'error', (err) ->
             console.log(err)
-            done()
+            done(err)
         mongoose.connection.on 'open', () ->
             modelsFolder = path.join(__dirname, './models')
             models = fs.readdirSync modelsFolder
